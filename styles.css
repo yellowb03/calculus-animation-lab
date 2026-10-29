@@ -136,148 +136,132 @@ body{min-width:320px;font-size:14px;line-height:1.5;overflow-x:hidden}
 .empty-search{padding:16px 10px;color:var(--muted);font-size:12px;text-align:center}
 .sidebar-foot{margin:10px 10px 0;padding-top:8px;border-top:1px solid var(--hairline);color:var(--dim);font-size:10.5px;text-align:center}
 
-/* Main Column & Problem Hero Banner */
+/* Main Column & Problem Hero Banner (Pure Zen Borderless Layout) */
 .main-column{
-  flex:1;width:100%;max-width:1120px;margin:0 auto;
+  flex:1;width:100%;max-width:1080px;margin:0 auto;
   display:flex;flex-direction:column;align-items:stretch;
-  padding:72px 28px 110px;background:#ffffff;
+  padding:60px 24px 120px;background:#ffffff;
 }
 .lesson-heading.problem-hero-banner{
-  width:100%;display:flex;flex-direction:column;align-items:stretch;
-  gap:10px;padding:16px 20px;margin-bottom:6px;
-  background:linear-gradient(180deg,#fcfcfd 0%,#f7f8fb 100%);
-  border:1.5px solid #111114;border-radius:16px;
-  box-shadow:0 6px 24px rgba(0,0,0,0.035);
+  width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:6px;padding:6px 12px 12px;margin-bottom:4px;
+  background:transparent;border:0;box-shadow:none;
+  border-bottom:1px solid var(--hairline);
   position:relative;
 }
 .problem-hero-top{
-  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;
-  border-bottom:1px solid var(--hairline);padding-bottom:8px;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;
+  border-bottom:0;padding-bottom:0;
 }
-.lesson-heading-main{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.lesson-heading-main{display:flex;flex-direction:column;align-items:center;gap:2px}
 .lesson-heading h1{
-  margin:0;font-size:clamp(19px,2.1vw,24px);line-height:1.25;font-weight:640;
+  margin:0;font-size:clamp(18px,2vw,23px);line-height:1.22;font-weight:640;
   letter-spacing:-0.02em;color:#111114;
 }
-.source-note{
-  font-size:11.5px;color:var(--dim);font-weight:500;
-}
+.source-note{display:none}
 .problem-hero-body{
-  display:flex;flex-direction:column;gap:10px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;
 }
 .problem-hero-statement{
   margin:0;
-  font-size:clamp(16px,2vw,21px);
-  line-height:1.45;
-  font-weight:580;
-  color:#111114;
-  letter-spacing:-0.01em;
-}
-.problem-given-function-card{
-  background:#ffffff;
-  border:1px solid var(--hairline-strong);
-  border-left:4px solid #111114;
-  border-radius:12px;
-  padding:12px 18px;
-  display:flex;flex-direction:column;align-items:flex-start;gap:6px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.025);
-}
-.given-function-label{
-  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  font-size:clamp(14px,1.5vw,16.5px);
+  line-height:1.4;
+  font-weight:520;
   color:#525258;
 }
+.problem-given-function-card{
+  background:transparent;
+  border:0;
+  padding:2px 8px;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  box-shadow:none;width:100%;
+}
+.given-function-label{display:none}
 .given-function-math{
-  width:100%;
+  max-width:100%;
   overflow-x:auto;overflow-y:hidden;
   -webkit-overflow-scrolling:touch;
-  display:flex;align-items:center;flex-wrap:wrap;gap:8px;
-  font-size:clamp(26px,3.4vw,42px);
-  line-height:1.35;
+  display:inline-flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:8px;
+  font-size:clamp(22px,2.7vw,34px);
+  line-height:1.3;
   color:#111114;
-  padding:4px 0;
+  padding:2px 4px;
 }
 .given-function-part{
   display:inline-flex;align-items:center;color:#111114;
 }
-.problem-hero-concept{
-  margin:0;
-  font-size:12.8px;line-height:1.5;color:#2c2c2e;
-  background:rgba(17,17,20,0.03);
-  padding:8px 12px;border-radius:8px;
-}
+.problem-hero-concept{display:none}
 .prompt-details{display:none}
 
 /* Workstage: Animated Step-by-Step Morphing Stage + Progressive Trail */
 .workstage{
-  width:100%;flex:1;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;
+  width:100%;flex:1;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:10px;
 }
 .equation-region{
   width:100%;
   display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;
-  padding:8px 0 4px;border:0;background:transparent;gap:10px;
+  padding:2px 0;border:0;background:transparent;gap:6px;
 }
 .equation-header{
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
-  margin-bottom:2px;padding:0 2px;
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;
+  margin-bottom:0;padding:0 2px;
 }
 .operation-label{
-  color:#ffffff;background:#111114;
-  padding:4px 12px;border-radius:999px;
-  font-size:10.5px;letter-spacing:.07em;font-weight:660;margin:0;
+  color:#0071E3;background:rgba(0,113,227,0.08);
+  padding:3px 11px;border-radius:999px;
+  font-size:10px;letter-spacing:.08em;font-weight:660;margin:0;
 }
 .manim-legend{
-  display:inline-flex;align-items:center;flex-wrap:wrap;gap:12px;
-  font-size:11.5px;font-weight:540;color:var(--muted);
+  display:inline-flex;align-items:center;flex-wrap:wrap;gap:10px;
+  font-size:11px;font-weight:520;color:var(--muted);
 }
 .legend-item{
   display:inline-flex;align-items:center;gap:5px;
 }
 .legend-dot{
-  width:8px;height:8px;border-radius:999px;display:inline-block;
+  width:7px;height:7px;border-radius:999px;display:inline-block;
 }
-.legend-dot.is-amber{background:#D97706;box-shadow:0 0 0 2px rgba(217,119,6,0.18)}
-.legend-dot.is-blue{background:#0071E3;box-shadow:0 0 0 2px rgba(0,113,227,0.18)}
-.legend-dot.is-coral{background:#FF3B30;box-shadow:0 0 0 2px rgba(255,59,48,0.18)}
+.legend-dot.is-amber{background:#D97706}
+.legend-dot.is-blue{background:#0071E3}
+.legend-dot.is-coral{background:#FF3B30}
 
-/* Animated 2-to-3 Line Morphing Derivation Stage */
+/* Animated 2-to-3 Line Morphing Derivation Stage (Borderless Zen Stage) */
 .equation-viewport{
   --step-progress:0;
   width:100%;overflow-x:visible;overflow-y:visible;
-  opacity:1;display:flex;flex-direction:column;align-items:stretch;gap:20px;
+  opacity:1;display:flex;flex-direction:column;align-items:stretch;gap:14px;
 }
 .derivation-stage{
   width:100%;
-  background:radial-gradient(circle at 50% 0%,#fafbfe 0%,#ffffff 75%);
-  border:1px solid var(--hairline-strong);
-  border-radius:18px;
-  padding:22px 24px;
-  box-shadow:0 10px 34px rgba(0,0,0,0.045);
-  display:flex;flex-direction:column;align-items:center;gap:14px;
+  background:transparent;
+  border:0;
+  padding:6px 8px;
+  box-shadow:none;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
 }
 .derivation-line{
   width:100%;
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  padding:10px 14px;border-radius:14px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:4px 8px;border-radius:12px;border:0;
   transition:background .2s ease,opacity .2s ease;
 }
 .derivation-line.is-context{
-  opacity:0.45;
+  opacity:0.42;
   cursor:pointer;
-  font-size:clamp(16px,2vw,23px);
+  font-size:clamp(15px,1.8vw,20px);
 }
-.derivation-line.is-context:hover{opacity:0.75;background:#f8f8fa}
+.derivation-line.is-context:hover{opacity:0.75}
 .derivation-line.is-prev{
-  background:#fafafc;
-  border:1px dashed var(--hairline-strong);
+  background:transparent;
+  border:0;
   cursor:pointer;
-  font-size:clamp(22px,2.8vw,36px);
+  font-size:clamp(19px,2.4vw,30px);
 }
-.derivation-line.is-prev:hover{background:#f4f5f8}
 .derivation-line.is-current{
-  background:#ffffff;
-  border:1.5px solid #111114;
-  box-shadow:0 6px 22px rgba(0,0,0,0.05);
-  padding:18px 20px;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  padding:6px 10px;
 }
 .derivation-step-badge{
   font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -308,18 +292,18 @@ body{min-width:320px;font-size:14px;line-height:1.5;overflow-x:hidden}
 
 /* Animated Operation Connector Bridge (.derivation-bridge) */
 .derivation-bridge{
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  background:linear-gradient(90deg,rgba(245,158,11,0.08),rgba(0,113,227,0.08));
-  border:1px solid rgba(0,113,227,0.22);
-  border-radius:14px;
-  padding:10px 16px;
-  max-width:780px;width:100%;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:rgba(118,118,128,0.06);
+  border:0;
+  border-radius:999px;
+  padding:6px 16px;
+  max-width:740px;width:auto;
 }
 .bridge-arrow-wrap{
-  width:32px;height:32px;border-radius:999px;
-  background:#111114;color:#ffffff;
+  width:24px;height:24px;border-radius:999px;
+  background:#0071E3;color:#ffffff;
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  font-size:17px;font-weight:700;
+  font-size:13px;font-weight:700;
   animation:bridgePulse 1.8s ease-in-out infinite;
 }
 @keyframes bridgePulse{
@@ -391,18 +375,19 @@ body{min-width:320px;font-size:14px;line-height:1.5;overflow-x:hidden}
 /* Progressive "Solution Steps Built So Far" Trail (.textbook-solution-sheet) */
 .textbook-solution-sheet{
   width:100%;
-  border:1px solid var(--hairline-strong);
-  border-top:2px solid #111114;
-  border-radius:12px;
-  overflow:hidden;
+  border:0;
+  border-top:1px solid var(--hairline);
+  border-radius:0;
+  overflow:visible;
   background:#ffffff;
   display:flex;flex-direction:column;
+  margin-top:8px;
 }
 .solution-problem-header{
-  padding:10px 16px;
+  padding:8px 4px;
   border-bottom:1px solid var(--hairline);
-  background:#f8f9fb;
-  display:flex;flex-direction:column;gap:6px;
+  background:transparent;
+  display:flex;flex-direction:column;gap:4px;
 }
 .problem-header-top{
   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
