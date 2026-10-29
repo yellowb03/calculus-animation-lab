@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#ffffff">
+  <title>Calculus Animation Lab</title>
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-row">
+        <div class="topbar-left">
+          <button class="icon-button menu-toggle" id="menuToggle" aria-label="Show homework list" aria-expanded="false" aria-controls="lessonSidebar">
+            <svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 6.5h13M3.5 10h9.5M3.5 13.5h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="pill-text">Lessons</span>
+          </button>
+          <a class="wordmark" href="#" aria-label="Calculus Animation Lab home"><span class="wordmark-mark">∫</span><span>Calculus <b>Lab</b></span></a>
+        </div>
+        <div class="topbar-actions">
+          <button type="button" class="quiet-button graph-toggle-button" id="graphToggleButton" aria-pressed="false" aria-controls="graphDrawer" title="Toggle interactive graph">
+            <svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 15.5h13M4.5 13.5c2.2-5.5 4.3-5.5 6.2-1.8 1.6 3.1 3.3 2.5 5.3-5.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="graphToggleLabel">Show graph</span>
+          </button>
+          <button class="quiet-button" id="newProblemButton">
+            <svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4.25v11.5M4.25 10h11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>New<span class="hide-mobile"> problem</span></span>
+          </button>
+          <button class="quiet-button" id="importButton">
+            <svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 13V4.5m0 0L6.75 7.75M10 4.5l3.25 3.25M4.5 14.75h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Import</span>
+          </button>
+          <input type="file" id="importFile" accept="application/json,.json" hidden>
+          <button class="quiet-button" id="exportButton">
+            <svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4.5V13m0 0l-3.25-3.25M10 13l3.25-3.25M4.5 15.25h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Export</span>
+          </button>
+        </div>
+      </div>
+      <nav class="floating-pill mode-switcher" id="modeSwitcher" aria-label="Study mode switcher">
+        <button type="button" class="mode-pill-button is-active" id="homeworkModeButton" data-mode="homework" aria-pressed="true">
+          <span id="homeworkModeLabel">Homework (12)</span>
+        </button>
+        <button type="button" class="mode-pill-button" id="conceptDemosButton" data-mode="concepts" aria-pressed="false">
+          <span id="conceptDemosLabel">Concept Examples (6)</span>
+        </button>
+        <button type="button" class="mode-pill-button mode-pill-accent" id="examEssentialsButton" data-mode="essentials" aria-pressed="false">
+          <span id="examEssentialsLabel">⚡ Tomorrow's Must-Knows</span>
+        </button>
+      </nav>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar collapsed" id="lessonSidebar" aria-label="Homework lessons">
+        <div class="sidebar-head"><span class="eyebrow">STUDY SET</span><span class="lesson-count" id="lessonCount">0 lessons</span></div>
+        <label class="search-wrap">
+          <span class="sr-only">Search lessons</span>
+          <svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="4.75" stroke="currentColor" stroke-width="1.5"/><path d="M12.7 12.7L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input id="lessonSearch" type="search" placeholder="Find exercise" autocomplete="off">
+        </label>
+        <nav class="lesson-list" id="lessonList" aria-label="Select a lesson"></nav>
+        <p class="sidebar-foot" id="sidebarFoot">12 homework exercises + 6 exam concept demos</p>
+      </aside>
+
+      <main class="main-column" id="mainColumn">
+        <div class="concept-demo-strip" id="conceptDemoStrip" hidden aria-label="Exam concept walkthroughs"></div>
+        <section class="lesson-heading problem-hero-banner" id="problemHeroBanner" aria-labelledby="lessonTitle">
+          <div class="problem-hero-top">
+            <div class="lesson-heading-main">
+              <p class="eyebrow" id="lessonMeta">SELECT A LESSON</p>
+              <h1 id="lessonTitle">Calculus Animation Lab</h1>
+            </div>
+            <span class="source-note" id="sourceNote"></span>
+          </div>
+          <div class="problem-hero-body">
+            <p class="problem-hero-statement" id="problemText"></p>
+            <div class="problem-given-function-card" id="givenFunctionCard">
+              <span class="given-function-label" id="givenFunctionLabel">GIVEN PROBLEM / STARTING EXPRESSION</span>
+              <div class="given-function-math" id="givenFunctionMath" aria-label="Given function or expression"></div>
+            </div>
+            <p class="problem-hero-concept" id="problemConceptNote"></p>
+          </div>
+          <details class="prompt-details" id="promptDetails" hidden>
+            <summary><span>Prompt</span></summary>
+          </details>
+        </section>
+
+        <section class="workstage" aria-label="Animated solution">
+          <div class="equation-region">
+            <div class="equation-header">
+              <div class="operation-label" id="operationLabel">Choose an exercise</div>
+              <div class="manim-legend" aria-label="Animation color key">
+                <span class="legend-item"><i class="legend-dot is-amber"></i>Operating on</span>
+                <span class="legend-item"><i class="legend-dot is-blue"></i>New result</span>
+                <span class="legend-item"><i class="legend-dot is-coral"></i>Cancels / check</span>
+              </div>
+            </div>
+            <div class="equation-viewport" id="equationViewport" aria-label="Animated step-by-step mathematical transformation" aria-live="polite">
+              <div class="equation-line" id="equationLine"></div>
+            </div>
+          </div>
+
+          <div class="learning-area">
+            <aside class="explanation-panel" aria-label="Step explanation">
+              <div class="explanation-head-row">
+                <p class="eyebrow">INTUITION</p>
+                <button type="button" class="play-step-audio-button" id="playStepAudioButton" aria-pressed="false" title="Play or stop voice narration for this step">
+                  <span id="playStepAudioLabel">🔊 Play Step Audio</span>
+                </button>
+              </div>
+              <h2 id="stepTitle">Ready when you are</h2>
+              <p class="why-text" id="stepWhy">Choose an exercise from the homework list to begin.</p>
+              <div class="step-dots" id="stepDots" aria-label="Steps in this lesson"></div>
+              <div class="step-progress"><span id="stepCount">STEP — / —</span><span id="stepClock">0:00</span></div>
+              <details class="narration-details">
+                <summary>Transcript</summary>
+                <p id="narrationText"></p>
+                <label class="speech-toggle"><input id="speechToggle" type="checkbox" checked><span>Auto-play voice on step change</span></label>
+                <p class="speech-note">Studio neural voice synced to each equation and graph transition.</p>
+              </details>
+            </aside>
+
+            <div class="graph-panel" id="graphDrawer" hidden>
+              <canvas id="graphCanvas" aria-label="Interactive Cartesian graph. Use the slider below to inspect points."></canvas>
+              <div class="graph-tools">
+                <span class="graph-caption" id="graphCaption">GEOMETRY</span>
+                <div class="graph-actions">
+                  <button class="graph-button" id="zoomOut" aria-label="Zoom out">
+                    <svg class="zen-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.75 8h8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  </button>
+                  <button class="graph-button" id="zoomIn" aria-label="Zoom in">
+                    <svg class="zen-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3.75v8.5M3.75 8h8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  </button>
+                  <button class="graph-button reset-button" id="resetGraph">Reset</button>
+                </div>
+                <label class="inspect-control">
+                  <span>x</span>
+                  <input type="range" id="inspectSlider" min="-3" max="3" step="0.01" value="0">
+                  <output id="inspectValue">—</output>
+                  <button type="button" id="clearInspect" class="clear-inspect" aria-label="Clear graph inspection">
+                    <svg class="zen-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  </button>
+                </label>
+              </div>
+              <p class="graph-hint" id="graphHint">Drag to pan · click curve to inspect · scroll to zoom</p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="transport" aria-label="Lesson controls">
+          <div class="transport-main">
+            <button class="transport-button" id="backButton" aria-label="Previous step">
+              <svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.75 5.25L7 10l4.75 4.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Back</span>
+            </button>
+            <button class="play-button" id="playButton" aria-label="Play steps" aria-pressed="false">
+              <span id="playIcon" aria-hidden="true">
+                <svg class="zen-icon" viewBox="0 0 20 20" fill="none"><path d="M7.25 5.25L14.75 10l-7.5 4.75V5.25Z" fill="currentColor"/></svg>
+              </span>
+              <span id="playLabel">Play</span>
+            </button>
+            <button class="transport-button" id="nextButton" aria-label="Next step">
+              <span>Next</span>
+              <svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8.25 5.25L13 10l-4.75 4.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="transport-button replay-button" id="replayButton" aria-label="Replay current step">
+              <svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5.25 8.25A5.25 5.25 0 1 1 6.2 13.5M5.25 4.75v3.5h3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Replay</span>
+            </button>
+          </div>
+          <div class="timeline">
+            <div class="timeline-labels"><span id="timelineStepLabel">Step 1</span><label for="timelineSlider">Timing</label><span id="timelinePercent">0%</span></div>
+            <input type="range" id="timelineSlider" min="0" max="1000" value="0" aria-label="Scrub within current step">
+          </div>
+          <div class="transport-side">
+            <button type="button" class="transport-button voice-button" id="voiceButton" aria-pressed="true" title="Toggle neural voice narration">
+              <span id="voiceIcon" aria-hidden="true">
+                <svg class="zen-icon" viewBox="0 0 20 20" fill="none"><path d="M4.5 8.25v3.5M7.75 5.75v8.5M11 7.25v5.5M14.25 4.75v10.5M17.25 8.25v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+              <span id="voiceLabel">Voice</span>
+            </button>
+            <label class="speed-control"><span class="sr-only">Speed</span><select id="speedSelect" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
+          </div>
+        </footer>
+      </main>
+
+      <section class="exam-essentials-view" id="examEssentialsView" hidden aria-labelledby="essentialsHeading">
+        <div class="essentials-hero">
+          <div class="essentials-hero-top">
+            <span class="essentials-eyebrow">⚡ EXAM CRAM · VISUAL PATTERN SHEET</span>
+            <button type="button" class="quiet-button essentials-back-button" id="closeEssentialsButton">
+              <svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.75 5.25L7 10l4.75 4.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Back to Animated Stage</span>
+            </button>
+          </div>
+          <h1 id="essentialsHeading">Tomorrow's Midterm Refresher · Ch 1, Ch 2 &amp; Ch 3 Must-Knows</h1>
+          <p class="essentials-subtitle">Everything you <b>absolutely must recognize</b> for tomorrow's exam: what pattern triggers the rule, what changes and where it comes from, and the #1 exam trap to avoid.</p>
+          <div class="essentials-filter-bar" id="essentialsFilterBar" role="tablist" aria-label="Filter concepts by chapter">
+            <button type="button" class="filter-pill is-active" data-chapter="all" role="tab" aria-selected="true">All Chapters</button>
+            <button type="button" class="filter-pill" data-chapter="ch1" role="tab" aria-selected="false">Ch 1 · Limits &amp; IVT</button>
+            <button type="button" class="filter-pill" data-chapter="ch2" role="tab" aria-selected="false">Ch 2 · Derivatives</button>
+            <button type="button" class="filter-pill" data-chapter="ch3" role="tab" aria-selected="false">Ch 3 · Extrema, MVT &amp; Shape</button>
+          </div>
+        </div>
+        <div class="essentials-grid" id="essentialsGrid" aria-live="polite"></div>
+      </section>
+    </div>
+  </div>
+
+  <dialog id="problemDialog" class="modal">
+    <form method="dialog" class="modal-frame" id="problemForm">
+      <div class="modal-header"><div><p class="eyebrow">WORK IT THROUGH</p><h2>New problem</h2></div><button class="icon-button close-modal" value="cancel" aria-label="Close"><svg class="zen-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
+      <p class="modal-intro">Generate steps for a supported symbolic method. The app will explain what it can solve and report unsupported cases directly.</p>
+      <label class="field-label">Method<select id="problemMode"><option value="derivative">Differentiate</option><option value="tangent">Tangent line</option><option value="linearization">Linearization</option><option value="limit">Finite limit</option></select></label>
+      <label class="field-label">Expression<input id="problemExpression" type="text" maxlength="300" placeholder="For example: x^2 * sin(x)" required spellcheck="false" autocomplete="off"></label>
+      <div class="field-row"><label class="field-label">Variable<input id="problemVariable" type="text" maxlength="8" value="x" required spellcheck="false" autocomplete="off"></label><label class="field-label"><span id="atLabel">At</span><input id="problemAt" type="text" maxlength="40" value="1" required spellcheck="false" autocomplete="off"></label></div>
+      <p class="scope-note" id="solverScope">Supported: elementary scalar expressions, sums, products, quotients, powers and common functions. Limits support direct substitution and verified rational removable factors.</p>
+      <p class="form-error" id="formError" role="alert" hidden></p>
+      <div class="modal-actions"><button class="quiet-button" value="cancel">Cancel</button><button class="primary-button" type="button" id="generateProblem">Generate steps</button></div>
+    </form>
+  </dialog>
+  <div id="liveAnnouncement" class="sr-only" aria-live="polite"></div>
+
+  <script src="vendor/math.js"></script>
+  <script src="vendor/katex/katex.min.js"></script>
+  <script src="lessons.js"></script>
+  <script src="exam_essentials.js"></script>
+  <script src="graphs.js"></script>
+  <script src="solver.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

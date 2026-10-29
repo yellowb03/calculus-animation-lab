@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "lessons": 12,
+  "steps": 124,
+  "fragments": 139,
+  "import_example": "PASS",
+  "checks": [
+    "Unique lesson and fragment IDs",
+    "Every equation parses with KaTeX",
+    "All three triangle-rate parts",
+    "Both extrema displayed including zero endpoint minimum"
+  ]
+}

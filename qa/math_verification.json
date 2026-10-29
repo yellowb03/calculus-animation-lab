@@ -1,0 +1,123 @@
+{
+  "checks": {
+    "01 conjugate limit": {
+      "actual": "1/6",
+      "expected": "1/6",
+      "pass": true
+    },
+    "02 common denominator": {
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    "03 definition of derivative": {
+      "actual": "4*x**3",
+      "expected": "4*x**3",
+      "pass": true
+    },
+    "04 product derivative": {
+      "actual": "sqrt(x)*(1 + 1/sqrt(x)) + (2*sqrt(x) + x)/(2*sqrt(x))",
+      "expected": "3*sqrt(x)/2 + 2",
+      "pass": true
+    },
+    "05 quotient derivative": {
+      "actual": "(2*u + 4)/(1 - u) + (u + 2)**2/(1 - u)**2",
+      "expected": "(-u**2 + 2*u + 8)/(1 - u)**2",
+      "pass": true
+    },
+    "06 nested chain derivative": {
+      "actual": "t*(tan(sqrt(t**2 + 1))**2 + 1)/sqrt(t**2 + 1)",
+      "expected": "t*sec(sqrt(t**2 + 1))**2/sqrt(t**2 + 1)",
+      "pass": true
+    },
+    "07 point lies on curve": {
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    "07 implicit slope": {
+      "actual": "-9/13",
+      "expected": "-9/13",
+      "pass": true
+    },
+    "07 tangent point": {
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    "08a related rates": {
+      "actual": "3/10",
+      "expected": "3/10",
+      "pass": true
+    },
+    "08b related rates": {
+      "actual": "3/10 + 3*sqrt(3)/4",
+      "expected": "3/10 + 3*sqrt(3)/4",
+      "pass": true
+    },
+    "08c related rates": {
+      "actual": "3/10 + 21*sqrt(3)/8",
+      "expected": "3/10 + 21*sqrt(3)/8",
+      "pass": true
+    },
+    "09 f(3)": {
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    "09 slope": {
+      "actual": "-3/4",
+      "expected": "-3/4",
+      "pass": true
+    },
+    "09 linearization": {
+      "actual": "13/4 - 3*x/4",
+      "expected": "13/4 - 3*x/4",
+      "pass": true
+    },
+    "10 derivative identity": {
+      "actual": "-2*sin(t) + 2*cos(2*t)",
+      "expected": "(2 - 4*sin(t))*(sin(t) + 1)",
+      "pass": true
+    },
+    "10 critical point": {
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    "10 left endpoint": {
+      "actual": "2",
+      "expected": "2",
+      "pass": true
+    },
+    "10 maximum": {
+      "actual": "3*sqrt(3)/2",
+      "expected": "3*sqrt(3)/2",
+      "pass": true
+    },
+    "10 right endpoint and minimum": {
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    "11 infinity conjugate": {
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    "12 reciprocal substitution": {
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    }
+  },
+  "count": 22,
+  "status": "PASS",
+  "notes": [
+    "Domains: lesson 03 function and derivative are real on all R.",
+    "Lesson 04 product-rule expression applies for x>0; right derivative at 0 is 2 if endpoint derivatives are considered.",
+    "Lesson 06 excludes tan poles. Lesson 09 uses a neighborhood of x=3 inside x>sqrt(5).",
+    "Related rates are area per minute, not spatial force derivatives.",
+    "Extrema set exhaustiveness independently checked on the closed interval."
+  ]
+}

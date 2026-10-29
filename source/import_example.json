@@ -1,0 +1,18 @@
+{
+  "id": "custom-tangent-example",
+  "title": "A tangent you can edit",
+  "homework": "Custom",
+  "section": "Practice",
+  "exercise": "Example",
+  "problem": "Find the tangent line to f(x)=x^2+2x at x=1.",
+  "source_note": "Original example. Edit this JSON to create another authored walkthrough; each step contains one equation and its explanation.",
+  "graph": {"kind":"function", "expression":"x^2+2*x", "variable":"x", "base":1, "xRange":[-3,3], "tangent":true, "derivative":"2*x+2"},
+  "steps": [
+    {"title":"Start with the function", "why":"The graph shows the original curve. We want the line touching it at x=1.", "narration":"We want a tangent to this curve at x equals one.", "parts":[{"id":"f", "tex":"f(x)=x^2+2x", "color":"white"}]},
+    {"title":"Differentiate both terms", "why":"The power rule differentiates x squared; the derivative of 2x is 2.", "narration":"Differentiate term by term to obtain two x plus two.", "parts":[{"id":"df", "tex":"f'(x)=2x+2", "color":"cyan"}]},
+    {"title":"Evaluate the slope", "why":"A derivative evaluated at the base point gives the tangent slope.", "narration":"At x equals one the slope is four.", "parts":[{"id":"slope", "tex":"f'(1)=2(1)+2=4", "color":"cyan"}]},
+    {"title":"Find the point", "why":"The tangent passes through the original curve at x=1.", "narration":"The height of the curve at one is three.", "parts":[{"id":"point", "tex":"f(1)=1^2+2(1)=3", "color":"white"}]},
+    {"title":"Use point-slope form", "why":"Insert slope 4 and point (1,3). This line has the same local slope as the curve.", "narration":"The tangent is y minus three equals four times x minus one.", "parts":[{"id":"line", "tex":"y-3=4(x-1)", "color":"cyan"}]},
+    {"title":"Simplify the line", "why":"Distribute 4, then add 3 to both sides.", "narration":"Distributing and collecting constants gives y equals four x minus one.", "parts":[{"id":"line", "tex":"y=4x-1", "color":"cyan"}]}
+  ]
+}
